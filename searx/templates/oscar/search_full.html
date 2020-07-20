@@ -1,0 +1,19 @@
+{% from 'oscar/macros.html' import icon %}
+
+<form method="{{ method or 'POST' }}" action="{{ url_for('index') }}" id="search_form" role="search">
+    {% if rtl %}
+    <div class="input-group">
+    {% else %}
+    <div class="input-group col-md-8 col-md-offset-2">
+    {% endif %}
+        <input type="search" autofocus name="q" class="form-control input-lg autofocus" id="q" placeholder="{{ _('在Velin上搜索，或者输入一个网址...') }}" aria-label="{{ _('Search for...') }}" autocomplete="off" value="{{ q }}" accesskey="s" onfocus="this.placeholder=''" onblur="this.placeholder='在Velin上搜索,或者输入一个网址...'">
+        <span class="input-group-btn">
+            <button type="submit" style="box-shadow: 0 1px 4px 0;border: 2px solid;" class="btn btn-default input-lg" aria-label="{{ _('Start search') }}"><span class="hide_if_nojs">{{ icon('search') }}</span><span class="hidden active_if_nojs">{{ _('Start search') }}</span></button>
+            <button type="reset" style="border-radius: 0 25px 25px 0!important; box-shadow: 0 1px 4px 0; border: 2px solid" class="btn btn-default input-lg" aria-label="{{ _('Clear search') }}"><span class="hide_if_nojs">{{ icon('remove') }}</span><span class="hidden active_if_nojs">{{ _('Clear') }}</span></button>
+        </span>
+    </div>
+    <div class="col-md-8 col-md-offset-2  advanced">
+        {% include 'oscar/advanced.html' %}
+    </div>
+
+</form><!-- / #search_form_full -->
